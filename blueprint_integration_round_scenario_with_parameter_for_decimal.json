@@ -369,272 +369,345 @@
                             }
                         },
                         {
-                            "id": 64,
-                            "module": "util:SetVariable",
+                            "id": 65,
+                            "module": "builtin:BasicRouter",
                             "version": 1,
-                            "parameters": {},
-                            "mapper": {
-                                "name": "teste",
-                                "scope": "roundtrip",
-                                "value": "{{56.i}} + {{length(53.value)}} / {{12.value}}"
-                            },
+                            "mapper": null,
                             "metadata": {
                                 "designer": {
-                                    "x": 2541,
-                                    "y": 515
-                                },
-                                "restore": {
-                                    "scope": {
-                                        "label": "One cycle"
-                                    }
-                                },
-                                "expect": [
-                                    {
-                                        "name": "name",
-                                        "label": "Variable name",
-                                        "type": "text",
-                                        "required": true
-                                    },
-                                    {
-                                        "name": "scope",
-                                        "label": "Variable lifetime",
-                                        "type": "select",
-                                        "required": true,
-                                        "validate": {
-                                            "enum": [
-                                                "roundtrip",
-                                                "execution"
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "name": "value",
-                                        "label": "Variable value",
-                                        "type": "any"
-                                    }
-                                ],
-                                "interface": [
-                                    {
-                                        "name": "value",
-                                        "label": "teste",
-                                        "type": "any"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "id": 60,
-                            "module": "util:SetVariable",
-                            "version": 1,
-                            "parameters": {},
-                            "mapper": {
-                                "name": "Final",
-                                "scope": "roundtrip",
-                                "value": "{{if(get(53.value; 12.value - 56.i + 1) = 8 & get(53.value; 12.value - 56.i + 1 + 1) = 9; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\") - 1; if(get(53.value; 12.value - 56.i + 1) = 9 | 12.value - 56.i != 12.value; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\") - 1; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\")))}}"
+                                    "x": 2198,
+                                    "y": 468
+                                }
                             },
-                            "metadata": {
-                                "designer": {
-                                    "x": 2841,
-                                    "y": 515
-                                },
-                                "restore": {
-                                    "scope": {
-                                        "label": "One cycle"
-                                    }
-                                },
-                                "expect": [
-                                    {
-                                        "name": "name",
-                                        "label": "Variable name",
-                                        "type": "text",
-                                        "required": true
-                                    },
-                                    {
-                                        "name": "scope",
-                                        "label": "Variable lifetime",
-                                        "type": "select",
-                                        "required": true,
-                                        "validate": {
-                                            "enum": [
-                                                "roundtrip",
-                                                "execution"
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "name": "value",
-                                        "label": "Variable value",
-                                        "type": "any"
-                                    }
-                                ],
-                                "interface": [
-                                    {
-                                        "name": "value",
-                                        "label": "Final",
-                                        "type": "any"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "id": 61,
-                            "module": "math:EvaluateExpression",
-                            "version": 1,
-                            "parameters": {},
-                            "mapper": {
-                                "expression": "((10^{{56.i}})*{{60.value}})"
-                            },
-                            "metadata": {
-                                "designer": {
-                                    "x": 3138,
-                                    "y": 523
-                                },
-                                "expect": [
-                                    {
-                                        "name": "expression",
-                                        "type": "text",
-                                        "label": "Expression",
-                                        "required": true
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "id": 62,
-                            "module": "util:FunctionAggregator",
-                            "version": 1,
-                            "parameters": {
-                                "fn": "sum",
-                                "feeder": 56
-                            },
-                            "mapper": {
-                                "result": "{{61.result}}"
-                            },
-                            "metadata": {
-                                "designer": {
-                                    "x": 3602,
-                                    "y": 521
-                                },
-                                "restore": {
-                                    "fn": {
-                                        "label": "SUM"
-                                    },
-                                    "feeder": {
-                                        "label": "Repeater"
-                                    },
-                                    "mapper": {
-                                        "label": [
-                                            null
-                                        ]
-                                    }
-                                },
-                                "parameters": [
-                                    {
-                                        "name": "fn",
-                                        "type": "select",
-                                        "label": "Aggregate function",
-                                        "required": true,
-                                        "validate": {
-                                            "enum": [
-                                                "avg",
-                                                "sum",
-                                                "count",
-                                                "max",
-                                                "min"
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "id": 63,
-                            "module": "math:EvaluateExpression",
-                            "version": 1,
-                            "parameters": {},
-                            "mapper": {
-                                "expression": "{{62.result}}+{{16.value}}"
-                            },
-                            "metadata": {
-                                "designer": {
-                                    "x": 4086,
-                                    "y": 515
-                                },
-                                "expect": [
-                                    {
-                                        "name": "expression",
-                                        "type": "text",
-                                        "label": "Expression",
-                                        "required": true
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "id": 13,
-                            "module": "gateway:WebhookRespond",
-                            "version": 1,
-                            "parameters": {},
-                            "mapper": {
-                                "body": "{{parseNumber(substring(5.Number; 0; indexOf(5.Number; \".\") + 1) + toString(63.result); \".\")}}",
-                                "status": "200",
-                                "headers": []
-                            },
-                            "metadata": {
-                                "designer": {
-                                    "x": 4701,
-                                    "y": 482
-                                },
-                                "restore": {
-                                    "headers": {
-                                        "items": []
-                                    }
-                                },
-                                "expect": [
-                                    {
-                                        "name": "status",
-                                        "type": "uinteger",
-                                        "label": "Status",
-                                        "required": true,
-                                        "validate": {
-                                            "min": 100
-                                        }
-                                    },
-                                    {
-                                        "name": "body",
-                                        "type": "any",
-                                        "label": "Body"
-                                    },
-                                    {
-                                        "name": "headers",
-                                        "spec": [
-                                            {
-                                                "name": "key",
-                                                "type": "text",
-                                                "label": "Key",
-                                                "required": true,
-                                                "validate": {
-                                                    "max": 256
-                                                }
+                            "routes": [
+                                {
+                                    "flow": [
+                                        {
+                                            "id": 67,
+                                            "module": "util:SetVariable",
+                                            "version": 1,
+                                            "parameters": {},
+                                            "filter": {
+                                                "name": ">=5",
+                                                "conditions": [
+                                                    [
+                                                        {
+                                                            "a": "{{get(53.value; 12.value - 56.i)}}",
+                                                            "o": "number:greaterorequal",
+                                                            "b": "5"
+                                                        }
+                                                    ]
+                                                ]
                                             },
-                                            {
-                                                "name": "value",
-                                                "type": "text",
-                                                "label": "Value",
-                                                "required": true,
-                                                "validate": {
-                                                    "max": 4096
-                                                }
+                                            "mapper": {
+                                                "name": "Final",
+                                                "scope": "roundtrip",
+                                                "value": "{{if(get(53.value; 12.value - 56.i + 1) = 8 & get(53.value; 12.value - 56.i + 1 + 1) = 9; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\") - 1; if(get(53.value; 12.value - 56.i + 1) = 9 | 12.value - 56.i != 12.value; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\") - 1; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\")))}}"
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 2561,
+                                                    "y": 98
+                                                },
+                                                "restore": {
+                                                    "scope": {
+                                                        "label": "One cycle"
+                                                    }
+                                                },
+                                                "expect": [
+                                                    {
+                                                        "name": "name",
+                                                        "label": "Variable name",
+                                                        "type": "text",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "scope",
+                                                        "label": "Variable lifetime",
+                                                        "type": "select",
+                                                        "required": true,
+                                                        "validate": {
+                                                            "enum": [
+                                                                "roundtrip",
+                                                                "execution"
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "value",
+                                                        "label": "Variable value",
+                                                        "type": "any"
+                                                    }
+                                                ],
+                                                "interface": [
+                                                    {
+                                                        "name": "value",
+                                                        "label": "Final",
+                                                        "type": "any"
+                                                    }
+                                                ]
                                             }
-                                        ],
-                                        "type": "array",
-                                        "label": "Custom headers",
-                                        "validate": {
-                                            "maxItems": 16
                                         }
-                                    }
-                                ]
-                            }
+                                    ]
+                                },
+                                {
+                                    "flow": [
+                                        {
+                                            "id": 68,
+                                            "module": "util:SetVariable",
+                                            "version": 1,
+                                            "parameters": {},
+                                            "filter": {
+                                                "name": "<5",
+                                                "conditions": [
+                                                    [
+                                                        {
+                                                            "a": "{{get(53.value; 12.value - 56.i)}}",
+                                                            "o": "number:less",
+                                                            "b": "5"
+                                                        }
+                                                    ]
+                                                ]
+                                            },
+                                            "mapper": {
+                                                "name": "Final",
+                                                "scope": "roundtrip",
+                                                "value": "{{get(53.value; 12.value - 56.i) * -1}}"
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 2604,
+                                                    "y": 404
+                                                },
+                                                "restore": {
+                                                    "scope": {
+                                                        "label": "One cycle"
+                                                    }
+                                                },
+                                                "expect": [
+                                                    {
+                                                        "name": "name",
+                                                        "label": "Variable name",
+                                                        "type": "text",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "scope",
+                                                        "label": "Variable lifetime",
+                                                        "type": "select",
+                                                        "required": true,
+                                                        "validate": {
+                                                            "enum": [
+                                                                "roundtrip",
+                                                                "execution"
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "value",
+                                                        "label": "Variable value",
+                                                        "type": "any"
+                                                    }
+                                                ],
+                                                "interface": [
+                                                    {
+                                                        "name": "value",
+                                                        "label": "Final",
+                                                        "type": "any"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "flow": [
+                                        {
+                                            "id": 66,
+                                            "module": "util:GetVariable",
+                                            "version": 1,
+                                            "parameters": {},
+                                            "mapper": {
+                                                "name": "Final"
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 2498,
+                                                    "y": 768
+                                                },
+                                                "expect": [
+                                                    {
+                                                        "name": "name",
+                                                        "label": "Variable name",
+                                                        "type": "text",
+                                                        "required": true
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "id": 61,
+                                            "module": "math:EvaluateExpression",
+                                            "version": 1,
+                                            "parameters": {},
+                                            "mapper": {
+                                                "expression": "((10^{{56.i}})*{{66.value}})"
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 3176,
+                                                    "y": 521
+                                                },
+                                                "expect": [
+                                                    {
+                                                        "name": "expression",
+                                                        "label": "Expression",
+                                                        "type": "text",
+                                                        "required": true
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "id": 62,
+                                            "module": "util:FunctionAggregator",
+                                            "version": 1,
+                                            "parameters": {
+                                                "fn": "sum",
+                                                "feeder": 56
+                                            },
+                                            "mapper": {
+                                                "result": "{{61.result}}"
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 3602,
+                                                    "y": 521
+                                                },
+                                                "restore": {
+                                                    "fn": {
+                                                        "label": "SUM"
+                                                    },
+                                                    "feeder": {
+                                                        "label": "Repeater"
+                                                    },
+                                                    "mapper": {
+                                                        "label": [
+                                                            null
+                                                        ]
+                                                    }
+                                                },
+                                                "parameters": [
+                                                    {
+                                                        "name": "fn",
+                                                        "type": "select",
+                                                        "label": "Aggregate function",
+                                                        "required": true,
+                                                        "validate": {
+                                                            "enum": [
+                                                                "avg",
+                                                                "sum",
+                                                                "count",
+                                                                "max",
+                                                                "min"
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "id": 63,
+                                            "module": "math:EvaluateExpression",
+                                            "version": 1,
+                                            "parameters": {},
+                                            "mapper": {
+                                                "expression": "{{62.result}}+{{16.value}}"
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 4086,
+                                                    "y": 515
+                                                },
+                                                "expect": [
+                                                    {
+                                                        "name": "expression",
+                                                        "type": "text",
+                                                        "label": "Expression",
+                                                        "required": true
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "id": 13,
+                                            "module": "gateway:WebhookRespond",
+                                            "version": 1,
+                                            "parameters": {},
+                                            "mapper": {
+                                                "body": "{{parseNumber(substring(5.Number; 0; indexOf(5.Number; \".\") + 1) + toString(63.result); \".\")}}",
+                                                "status": "200",
+                                                "headers": []
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 4701,
+                                                    "y": 482
+                                                },
+                                                "restore": {
+                                                    "headers": {
+                                                        "items": []
+                                                    }
+                                                },
+                                                "expect": [
+                                                    {
+                                                        "name": "status",
+                                                        "type": "uinteger",
+                                                        "label": "Status",
+                                                        "required": true,
+                                                        "validate": {
+                                                            "min": 100
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "body",
+                                                        "type": "any",
+                                                        "label": "Body"
+                                                    },
+                                                    {
+                                                        "name": "headers",
+                                                        "spec": [
+                                                            {
+                                                                "name": "key",
+                                                                "type": "text",
+                                                                "label": "Key",
+                                                                "required": true,
+                                                                "validate": {
+                                                                    "max": 256
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "value",
+                                                                "type": "text",
+                                                                "label": "Value",
+                                                                "required": true,
+                                                                "validate": {
+                                                                    "max": 4096
+                                                                }
+                                                            }
+                                                        ],
+                                                        "type": "array",
+                                                        "label": "Custom headers",
+                                                        "validate": {
+                                                            "maxItems": 16
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
