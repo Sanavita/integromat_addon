@@ -369,19 +369,19 @@
                             }
                         },
                         {
-                            "id": 60,
+                            "id": 64,
                             "module": "util:SetVariable",
                             "version": 1,
                             "parameters": {},
                             "mapper": {
-                                "name": "Final",
+                                "name": "teste",
                                 "scope": "roundtrip",
-                                "value": "{{if(get(53.value; 12.value - 56.i + 1) = 8 & get(53.value; 12.value - 56.i + 1 + 1) = 9; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\") - 1; if(get(53.value; 12.value - 56.i + 1) = 9; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\") - 1; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\")))}}"
+                                "value": "{{56.i}} + {{length(53.value)}} / {{12.value}}"
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 2354,
-                                    "y": 505
+                                    "x": 2541,
+                                    "y": 515
                                 },
                                 "restore": {
                                     "scope": {
@@ -391,14 +391,14 @@
                                 "expect": [
                                     {
                                         "name": "name",
-                                        "type": "text",
                                         "label": "Variable name",
+                                        "type": "text",
                                         "required": true
                                     },
                                     {
                                         "name": "scope",
-                                        "type": "select",
                                         "label": "Variable lifetime",
+                                        "type": "select",
                                         "required": true,
                                         "validate": {
                                             "enum": [
@@ -409,15 +409,69 @@
                                     },
                                     {
                                         "name": "value",
-                                        "type": "any",
-                                        "label": "Variable value"
+                                        "label": "Variable value",
+                                        "type": "any"
                                     }
                                 ],
                                 "interface": [
                                     {
                                         "name": "value",
-                                        "type": "any",
-                                        "label": "Final"
+                                        "label": "teste",
+                                        "type": "any"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 60,
+                            "module": "util:SetVariable",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "Final",
+                                "scope": "roundtrip",
+                                "value": "{{if(get(53.value; 12.value - 56.i + 1) = 8 & get(53.value; 12.value - 56.i + 1 + 1) = 9; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\") - 1; if(get(53.value; 12.value - 56.i + 1) = 9 | 12.value - 56.i != 12.value; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\") - 1; 10 - parseNumber(substring(16.value; 12.value - 56.i - 1; 12.value - 56.i); \".\")))}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 2841,
+                                    "y": 515
+                                },
+                                "restore": {
+                                    "scope": {
+                                        "label": "One cycle"
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "label": "Variable name",
+                                        "type": "text",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "scope",
+                                        "label": "Variable lifetime",
+                                        "type": "select",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "roundtrip",
+                                                "execution"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "value",
+                                        "label": "Variable value",
+                                        "type": "any"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "value",
+                                        "label": "Final",
+                                        "type": "any"
                                     }
                                 ]
                             }
@@ -432,7 +486,7 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 2838,
+                                    "x": 3138,
                                     "y": 523
                                 },
                                 "expect": [
@@ -458,7 +512,7 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 3302,
+                                    "x": 3602,
                                     "y": 521
                                 },
                                 "restore": {
@@ -503,7 +557,7 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 3786,
+                                    "x": 4086,
                                     "y": 515
                                 },
                                 "expect": [
@@ -528,7 +582,7 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 4401,
+                                    "x": 4701,
                                     "y": 482
                                 },
                                 "restore": {
