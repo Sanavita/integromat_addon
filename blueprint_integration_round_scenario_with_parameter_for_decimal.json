@@ -174,8 +174,8 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 577,
-                                    "y": 666,
+                                    "x": 568,
+                                    "y": 688,
                                     "name": "DecimalPlacesStartNumber"
                                 },
                                 "restore": {
@@ -229,8 +229,8 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 898,
-                                    "y": 745,
+                                    "x": 859,
+                                    "y": 729,
                                     "name": "NumberAfterDecimalSeparator"
                                 },
                                 "restore": {
@@ -273,6 +273,61 @@
                             }
                         },
                         {
+                            "id": 78,
+                            "module": "util:SetVariable",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "NumberFinalToRound",
+                                "scope": "roundtrip",
+                                "value": "{{substring(5.Number; 0; indexOf(5.Number; \".\") + 5.DecimalPlaces + 1)}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1306,
+                                    "y": 762,
+                                    "name": "NumberFinalToRound"
+                                },
+                                "restore": {
+                                    "scope": {
+                                        "label": "One cycle"
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "scope",
+                                        "type": "select",
+                                        "label": "Variable lifetime",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "roundtrip",
+                                                "execution"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "any",
+                                        "label": "Variable value"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "value",
+                                        "type": "any",
+                                        "label": "NumberFinalToRound"
+                                    }
+                                ]
+                            }
+                        },
+                        {
                             "id": 53,
                             "module": "util:SetVariable",
                             "version": 1,
@@ -284,8 +339,8 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 1200,
-                                    "y": 750,
+                                    "x": 1686,
+                                    "y": 753,
                                     "name": "ArrayOfNumbers"
                                 },
                                 "restore": {
@@ -334,7 +389,7 @@
                             "mapper": null,
                             "metadata": {
                                 "designer": {
-                                    "x": 1673,
+                                    "x": 1973,
                                     "y": 739
                                 }
                             },
@@ -377,8 +432,8 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 2405,
-                                                    "y": 379
+                                                    "x": 2273,
+                                                    "y": 439
                                                 },
                                                 "restore": {
                                                     "scope": {
@@ -425,11 +480,11 @@
                                             "version": 1,
                                             "parameters": {},
                                             "mapper": {
-                                                "expression": "{{75.value}}+1"
+                                                "expression": "{{78.value}}+(1/(10^({{5.DecimalPlaces}})))"
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 2901,
+                                                    "x": 2984,
                                                     "y": 364
                                                 },
                                                 "expect": [
@@ -448,13 +503,13 @@
                                             "version": 1,
                                             "parameters": {},
                                             "mapper": {
-                                                "body": "{{parseNumber(substring(5.Number; 0; indexOf(5.Number; \".\") + 1) + toString(74.result); \".\")}}",
+                                                "body": "{{parseNumber(substring(74.result; 0; indexOf(74.result; \".\") + 5.DecimalPlaces + 1); \".\")}}",
                                                 "status": "200",
                                                 "headers": []
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 3370,
+                                                    "x": 3670,
                                                     "y": 373
                                                 },
                                                 "restore": {
@@ -518,7 +573,7 @@
                                             "version": 1,
                                             "parameters": {},
                                             "filter": {
-                                                "name": "<5 AND ([0,9] and <4)",
+                                                "name": "<5 AND ([0,9] and <4) OR <4",
                                                 "conditions": [
                                                     [
                                                         {
@@ -531,6 +586,13 @@
                                                             "b": "9",
                                                             "o": "number:less"
                                                         }
+                                                    ],
+                                                    [
+                                                        {
+                                                            "a": "{{get(53.value; 5.DecimalPlaces + 1)}}",
+                                                            "b": "4",
+                                                            "o": "number:less"
+                                                        }
                                                     ]
                                                 ]
                                             },
@@ -541,8 +603,8 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 2411,
-                                                    "y": 678
+                                                    "x": 2480,
+                                                    "y": 735
                                                 },
                                                 "restore": {
                                                     "headers": {
